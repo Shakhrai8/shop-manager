@@ -1,94 +1,53 @@
-Shop Manager Project
-=================
+# Shop Manager Model and Repository Classes
 
-* Feel free to use Google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code next Monday morning
+This repository provides a design recipe for creating Model and Repository classes for a database table in the context of a Shop Manager application.
 
-Challenge:
--------
+## Table of Contents
+- [Introduction](#introduction)
+- [Table Design](#table-design)
+- [Test SQL Seeds](#test-sql-seeds)
+- [Model and Repository Classes](#model-and-repository-classes)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
 
-Please start by [forking this repo](https://github.com/makersacademy/shop-manager-challenge/fork), then clone your fork to your local machine. Work into that directory.
+## Introduction
+The Shop Manager Model and Repository classes are designed to provide an interface for interacting with a database table and managing the shop's items, orders, and order items.
 
-We are going to write a small terminal program allowing the user to manage a shop database containing some items and orders.
+## Project Design
+The Project design can be found in the `shop_manager_main_design.md` file. It includes the structure and relationships between the `items`, `orders`, and `order_items` tables. The main schema `shop_manager_schema.sql`
 
-User stories:
--------
+## Test SQL Seeds
+To ensure proper testing, it is recommended to have seed data stored in PostgreSQL. If you don't already have seed data, you can use the provided SQL seeds located in the `seeds_shop_manager.sql` file. These seeds populate the `items`, `orders`, and `order_items` tables with sample data.
 
-```
-As a shop manager
-So I can know which items I have in stock
-I want to keep a list of my shop items with their name and unit price.
+## Model and Repository Classes
+The Model classes represent the entities in the database table, while the Repository classes provide methods for interacting with the database.
 
-As a shop manager
-So I can know which items I have in stock
-I want to know which quantity (a number) I have for each item.
+The following classes are implemented:
+- `Item`: Represents an item in the shop.
+- `ItemRepository`: Provides methods for managing items.
+- `Order`: Represents an order placed by a customer.
+- `OrderRepository`: Provides methods for managing orders.
+- `OrderItem`: Represents a relationship between an order and an item.
+- `OrderItemRepository`: Provides methods for managing order items.
 
-As a shop manager
-So I can manage items
-I want to be able to create a new item.
+Please refer to the code files for the implementation details and method signatures.
 
-As a shop manager
-So I can know which orders were made
-I want to keep a list of orders with their customer name.
+## Testing
+Testing is an important part of ensuring the correctness of the Model and Repository classes. You can find test examples in the `examples.rb` file. These examples demonstrate the usage of the Repository classes and their methods.
 
-As a shop manager
-So I can know which orders were made
-I want to assign each order to their corresponding item.
+To run the tests, make sure you have RSpec installed. Then, execute the following command in your terminal:
 
-As a shop manager
-So I can know which orders were made
-I want to know on which date an order was placed. 
-
-As a shop manager
-So I can manage orders
-I want to be able to create a new order.
+```shell
+rspec examples.rb
 ```
 
-Here's an example of the terminal output your program should generate (yours might be slightly different — that's totally OK):
+To run the tests, make sure you have a PostgreSQL database set up and configured properly. You can reload the SQL seeds before each test run to ensure a consistent state of the database.
 
-```
-Welcome to the shop management program!
+## Contributing
 
-What do you want to do?
-  1 = list all shop items
-  2 = create a new item
-  3 = list all orders
-  4 = create a new order
+Contributions are welcome! If you have any improvements or suggestions, please feel free to submit a pull request.
 
-1 [enter]
+## License
 
-Here's a list of all shop items:
-
- #1 Super Shark Vacuum Cleaner - Unit price: 99 - Quantity: 30
- #2 Makerspresso Coffee Machine - Unit price: 69 - Quantity: 15
- (...)
-```
-
-Technical Approach:
------
-
-In this unit, you integrated a database by using the `PG` gem, and test-driving and building Repository classes. You can continue to use this approach when building this challenge.
-
-[You'll also need to mock IO](https://github.com/makersacademy/golden-square/blob/main/mocking_bites/05_unit_testing_terminal_io_bite.md) in your integration or unit tests, since the program will ask for user input.
-
-Notes on test coverage
-----------------------
-
-Please ensure you have the following **AT THE TOP** of your spec_helper.rb in order to have test coverage stats generated
-on your pull request:
-
-```ruby
-require 'simplecov'
-require 'simplecov-console'
-
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::Console,
-  # Want a nice code coverage website? Uncomment this next line!
-  # SimpleCov::Formatter::HTMLFormatter
-])
-SimpleCov.start
-```
-
-You can see your test coverage when you run your tests. If you want this in a graphical form, uncomment the `HTMLFormatter` line and see what happens!
+This project is licensed under the MIT License.
